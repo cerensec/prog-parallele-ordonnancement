@@ -4,10 +4,13 @@ const port = 3000;
 
 // Simulation de la BDD
 const users = {
-    "john.doe@example.com": { age: 30, city: "New York" },
-    "jane.smith@example.com": { age: 25, city: "London" },
-    "alice.wonderland@example.com": { age: 28, city: "Paris" }
+    "bob@example.com": { age: 30, city: "New York" },
+    "alice@example.com": { age: 25, city: "London" }
 };
+
+// Requête de Test pour l'API
+// curl "http://localhost:3000/api/users?email=john.doe@example.com"
+
 
 app.use(express.json());
 
@@ -15,7 +18,7 @@ app.get('/api/users', (req, res) => {
     const email = req.query.email;
 
     if(!email) {
-        return res.statuts(400).json({ error: "Email is required" });
+        return res.status(400).json({ error: "Email is required" });
     }
 
     const user = users[email];
